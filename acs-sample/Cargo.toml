@@ -1,0 +1,21 @@
+[package]
+name = "acs-sample"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+description = "Bellman adapter and Merkle-path example for the ACS crate"
+repository = "https://github.com/mingyuhe22/zk-adaptive-constraint-system"
+
+[dependencies]
+acs = { path = ".." }
+serde = { version = "1.0.162", features = ["derive"] }
+serde_json = "1.0.96"
+franklin-crypto = { version = "=0.2.2", features = ["multicore", "plonk"] }
+rescue_poseidon = "=0.5.2"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "warn"

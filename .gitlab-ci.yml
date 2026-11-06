@@ -1,0 +1,23 @@
+stages:
+  - check
+
+core:
+  stage: check
+  image: rust:1.85.1
+  script:
+    - cargo fmt --all -- --check
+    - cargo clippy --locked --all-targets -- -D warnings
+    - cargo test --locked --all-targets
+    - RUSTDOCFLAGS="-D missing_docs" cargo doc --locked --no-deps
+
+bellman-sample:
+  stage: check
+  image: rust:1.85.1
+  before_script:
+    - rustup toolchain install nightly-2024-08-01 --profile minimal --component clippy,rustfmt
+  script:
+    - cd acs-sample
+    - cargo +nightly-2024-08-01 fmt --all -- --check
+    - cargo +nightly-2024-08-01 clippy --locked --all-targets -- -D warnings
+    - cargo +nightly-2024-08-01 test --locked --all-targets
+    - RUSTDOCFLAGS="-D missing_docs" cargo +nightly-2024-08-01 doc --locked --no-deps

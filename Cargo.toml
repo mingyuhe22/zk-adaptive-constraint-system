@@ -1,0 +1,18 @@
+[package]
+name = "acs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+license = "MIT"
+description = "Adaptive constraint-system primitives for reusable ZK circuit frontends"
+repository = "https://github.com/mingyuhe22/zk-adaptive-constraint-system"
+
+[dependencies]
+lambdaworks-math = { git = "https://github.com/lambdaclass/lambdaworks", rev = "366ac95febbf6f0b781e8d83b8c710ff6f13ec13" }
+serde = { version = "1.0.162", features = ["derive"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "warn"
